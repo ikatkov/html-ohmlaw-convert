@@ -1,6 +1,6 @@
 {
   "name": "html-ohmlaw-convert",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A static HTML page Ohm's Law calculator with Semantic Release",
   "main": "dbconvert.html",
   "repository": {

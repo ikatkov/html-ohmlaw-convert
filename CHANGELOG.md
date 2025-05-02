@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/ikatkov/html-ohmlaw-convert/compare/v1.1.0...v1.1.1) (2025-05-02)
+
+
+### Bug Fixes
+
+* initial values ([6686f7e](https://github.com/ikatkov/html-ohmlaw-convert/commit/6686f7ee3a0cb508aab1d1b0bd79869b669f45ed))
+
 # [1.1.0](https://github.com/ikatkov/html-ohmlaw-convert/compare/v1.0.1...v1.1.0) (2025-05-02)
 
 
