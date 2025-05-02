@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/ikatkov/html-ohmlaw-convert/compare/v1.0.1...v1.1.0) (2025-05-02)
+
+
+### Features
+
+* change default values ([275b07c](https://github.com/ikatkov/html-ohmlaw-convert/commit/275b07ca4bb21fcc5a95d193fd71890b69a2c6b0))
+
 ## [1.0.1](https://github.com/ikatkov/html-ohmlaw-convert/compare/v1.0.0...v1.0.1) (2025-05-02)
 
 
