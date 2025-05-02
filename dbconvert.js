@@ -54,6 +54,66 @@ function updateLastEdited(fieldName) {
     }
 }
 
+function getBestUnit(value, field) {
+    // If value is 0, use base unit
+    if (value === 0) {
+        switch (field) {
+            case 'voltage': return 'V';
+            case 'current': return 'A';
+            case 'resistance': return 'Ω';
+            case 'power': return 'W';
+        }
+    }
+    
+    // For values >= 1000 in milli units, use base unit
+    if (Math.abs(value) >= 1000) {
+        switch (field) {
+            case 'voltage': return 'V';
+            case 'current': return 'A';
+            case 'resistance': return 'Ω';
+            case 'power': return 'W';
+        }
+    }
+    
+    // For values < 1 in base units, use milli unit
+    if (Math.abs(value) < 1) {
+        switch (field) {
+            case 'voltage': return 'mV';
+            case 'current': return 'mA';
+            case 'resistance': return 'mΩ';
+            case 'power': return 'mW';
+        }
+    }
+    
+    // For values between 1 and 1000, use base unit
+    switch (field) {
+        case 'voltage': return 'V';
+        case 'current': return 'A';
+        case 'resistance': return 'Ω';
+        case 'power': return 'W';
+    }
+}
+
+function updateFieldWithBestUnit(f, field, value) {
+    const newUnit = getBestUnit(value, field);
+    if (newUnit) {
+        const button = f[field].nextElementSibling;
+        const displayValue = newUnit.startsWith('m') ? value * 1000 : value / 1000;
+        f[field].value = pretty(displayValue);
+        button.textContent = newUnit;
+        
+        // Update the unit state
+        switch (field) {
+            case 'voltage': voltageUnit = newUnit; break;
+            case 'current': currentUnit = newUnit; break;
+            case 'resistance': resistanceUnit = newUnit; break;
+            case 'power': powerUnit = newUnit; break;
+        }
+    } else {
+        f[field].value = pretty(value);
+    }
+}
+
 function calculateFromLastEdited(f) {
     if (lastEditedFields.length < 2) return;
 
@@ -74,54 +134,79 @@ function calculateFromLastEdited(f) {
     if (field2 === 'resistance' && resistanceUnit === 'mΩ') val2 = val2 / 1000;
     if (field2 === 'power' && powerUnit === 'mW') val2 = val2 / 1000;
 
+    let result1, result2;
     switch (field1 + field2) {
         case 'voltagecurrent':
-            f.resistance.value = pretty(val1 / val2);
-            f.power.value = pretty(val1 * val2);
+            result1 = val1 / val2;  // resistance
+            result2 = val1 * val2;  // power
+            updateFieldWithBestUnit(f, 'resistance', result1);
+            updateFieldWithBestUnit(f, 'power', result2);
             break;
         case 'currentvoltage':
-            f.resistance.value = pretty(val2 / val1);
-            f.power.value = pretty(val1 * val2);
+            result1 = val2 / val1;  // resistance
+            result2 = val1 * val2;  // power
+            updateFieldWithBestUnit(f, 'resistance', result1);
+            updateFieldWithBestUnit(f, 'power', result2);
             break;
         case 'voltageresistance':
-            f.current.value = pretty(val1 / val2);
-            f.power.value = pretty((val1 * val1) / val2);
+            result1 = val1 / val2;  // current
+            result2 = (val1 * val1) / val2;  // power
+            updateFieldWithBestUnit(f, 'current', result1);
+            updateFieldWithBestUnit(f, 'power', result2);
             break;
         case 'resistancevoltage':
-            f.current.value = pretty(val2 / val1);
-            f.power.value = pretty((val2 * val2) / val1);
+            result1 = val2 / val1;  // current
+            result2 = (val2 * val2) / val1;  // power
+            updateFieldWithBestUnit(f, 'current', result1);
+            updateFieldWithBestUnit(f, 'power', result2);
             break;
         case 'voltagepower':
-            f.current.value = pretty(val2 / val1);
-            f.resistance.value = pretty((val1 * val1) / val2);
+            result1 = val2 / val1;  // current
+            result2 = (val1 * val1) / val2;  // resistance
+            updateFieldWithBestUnit(f, 'current', result1);
+            updateFieldWithBestUnit(f, 'resistance', result2);
             break;
         case 'powervoltage':
-            f.current.value = pretty(val1 / val2);
-            f.resistance.value = pretty((val2 * val2) / val1);
+            result1 = val1 / val2;  // current
+            result2 = (val2 * val2) / val1;  // resistance
+            updateFieldWithBestUnit(f, 'current', result1);
+            updateFieldWithBestUnit(f, 'resistance', result2);
             break;
         case 'currentresistance':
-            f.voltage.value = pretty(val1 * val2);
-            f.power.value = pretty(val1 * val1 * val2);
+            result1 = val1 * val2;  // voltage
+            result2 = val1 * val1 * val2;  // power
+            updateFieldWithBestUnit(f, 'voltage', result1);
+            updateFieldWithBestUnit(f, 'power', result2);
             break;
         case 'resistancecurrent':
-            f.voltage.value = pretty(val2 * val1);
-            f.power.value = pretty(val2 * val2 * val1);
+            result1 = val2 * val1;  // voltage
+            result2 = val2 * val2 * val1;  // power
+            updateFieldWithBestUnit(f, 'voltage', result1);
+            updateFieldWithBestUnit(f, 'power', result2);
             break;
         case 'currentpower':
-            f.voltage.value = pretty(val2 / val1);
-            f.resistance.value = pretty(val2 / (val1 * val1));
+            result1 = val2 / val1;  // voltage
+            result2 = val2 / (val1 * val1);  // resistance
+            updateFieldWithBestUnit(f, 'voltage', result1);
+            updateFieldWithBestUnit(f, 'resistance', result2);
             break;
         case 'powercurrent':
-            f.voltage.value = pretty(val1 / val2);
-            f.resistance.value = pretty(val1 / (val2 * val2));
+            result1 = val1 / val2;  // voltage
+            result2 = val1 / (val2 * val2);  // resistance
+            updateFieldWithBestUnit(f, 'voltage', result1);
+            updateFieldWithBestUnit(f, 'resistance', result2);
             break;
         case 'resistancepower':
-            f.voltage.value = pretty(Math.sqrt(val2 * val1));
-            f.current.value = pretty(Math.sqrt(val2 / val1));
+            result1 = Math.sqrt(val2 * val1);  // voltage
+            result2 = Math.sqrt(val2 / val1);  // current
+            updateFieldWithBestUnit(f, 'voltage', result1);
+            updateFieldWithBestUnit(f, 'current', result2);
             break;
         case 'powerresistance':
-            f.voltage.value = pretty(Math.sqrt(val1 * val2));
-            f.current.value = pretty(Math.sqrt(val1 / val2));
+            result1 = Math.sqrt(val1 * val2);  // voltage
+            result2 = Math.sqrt(val1 / val2);  // current
+            updateFieldWithBestUnit(f, 'voltage', result1);
+            updateFieldWithBestUnit(f, 'current', result2);
             break;
     }
 }
