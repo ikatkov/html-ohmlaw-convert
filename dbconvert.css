@@ -22,12 +22,12 @@ body::before {
     background-repeat: no-repeat;
     background-position: center;
     background-size: auto 100vh;
-    opacity: 0.25;
+    opacity: 0.03;
     z-index: -1;
 }
 
 table {
-    font-size: inherit;
+    font-size: 0.9em;
     line-height: inherit;
     width: 100%;
 
@@ -47,7 +47,7 @@ table {
 }
 
 .dbc-formtable input {
-    width: 140px;
+    width: 110px;
     padding: 8px 12px;
     border: 2px solid #e2e8f0;
     border-radius: 6px;
