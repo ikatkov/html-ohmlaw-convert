@@ -1,0 +1,139 @@
+/* Base styles */
+body {
+    font-size: 28px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background-color: #f5f7fa;
+    color: #2d3748;
+    min-height: 400px;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('./background.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100vh;
+    opacity: 0.25;
+    z-index: -1;
+}
+
+table {
+    font-size: inherit;
+    line-height: inherit;
+    width: 100%;
+
+}
+
+.dbc-formtable {
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dbc-formtable input {
+    width: 140px;
+    padding: 8px 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 28px;
+    background-color: #f8fafc;
+    color: #2d3748;
+    margin-right: 8px;
+}
+
+.dbc-formtable input:focus {
+    outline: none;
+    border-color: #3182ce;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.2);
+}
+
+.dbc-formtable-section {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #4a5568;
+    margin: 16px 0 8px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.dbc-rightcell {
+    text-align: center;
+}
+
+/* Dropdown select */
+.dbc-formtable select {
+    padding: 8px 2px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: inherit;
+    background-color: white;
+    max-width: 200px;
+}
+
+.dbc-formtable select:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+}
+
+/* Table cells */
+.dbc-formtable td {
+    padding: 8px 0px;
+    vertical-align: middle;
+}
+
+.small-sub {
+    font-size: 0.6em;
+}
+
+
+/* Animation for value changes */
+@keyframes valueChange {
+    0% {
+        background-color: #f0fff4;
+    }
+    50% {
+        background-color: #c6f6d5;
+    }
+    100% {
+        background-color: #f8fafc;
+    }
+}
+
+@keyframes errorChange {
+    0% {
+        background-color: #fff5f5;
+    }
+    50% {
+        background-color: #fed7d7;
+    }
+    100% {
+        background-color: #f8fafc;
+    }
+}
+
+.value-changed {
+    animation: valueChange 0.5s ease-out;
+}
+
+.error-changed {
+    animation: errorChange 0.5s ease-out;
+}

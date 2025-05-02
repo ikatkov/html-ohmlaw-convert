@@ -1,0 +1,69 @@
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>Ohm's Law Calculator</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="icon-192x192.png">    
+    <link href="dbconvert.css" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <div style="margin: 0px auto;">
+            <form name="convert" action="javascript:update(document.forms.convert);" method="post">
+                <table class="dbc-formtable" id="converttable">
+                    <tbody>
+                        <tr>
+                            <td rowspan="3">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="3" class="dbc-formtable-section">Ohm's Law Calculator</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Voltage (V)</td>
+                                            <td class="dbc-rightcell"><br></td>
+                                            <td>
+                                                <input type="number" name="voltage" value="0" onchange="update_voltage(this.form)">
+                                                V
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Current (I)</td>
+                                            <td class="dbc-rightcell"><br></td>
+                                            <td>
+                                                <input type="number" name="current" value="0" onchange="update_current(this.form)">
+                                                A
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Resistance (R)</td>
+                                            <td class="dbc-rightcell"><br></td>
+                                            <td>
+                                                <input type="number" name="resistance" value="0" onchange="update_resistance(this.form)">
+                                                Ω
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Power (P)</td>
+                                            <td class="dbc-rightcell"><br></td>
+                                            <td>
+                                                <input type="number" name="power" value="0" onchange="update_power(this.form)">
+                                                W
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+            <div id="out" style="position: absolute; visibility: visible; height: 130px;"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="dbconvert.js"></script>
+</body>
+</html>
