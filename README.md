@@ -2,7 +2,7 @@
 
 # Live page
 
-https://ikatkov.github.io/html-rf-convert/dbconvert.html
+https://ikatkov.github.io/html-ohmlaw-convert/dbconvert.html
 
 # Install on mobile
 
