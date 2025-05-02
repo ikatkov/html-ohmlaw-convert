@@ -5,7 +5,7 @@
   "main": "dbconvert.html",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ikatkov/html-rfohmlaw-convert.git"
+    "url": "https://github.com/ikatkov/html-ohmlaw-convert.git"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
