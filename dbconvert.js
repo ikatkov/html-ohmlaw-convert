@@ -332,16 +332,16 @@ function init() {
     // Initialize with default values
     const form = document.forms.convert;
     form.voltage.value = "5";
-    form.current.value = "0.05";
-    form.resistance.value = "100";
-    form.power.value = "0.25";
+    form.current.value = "100";
+    form.resistance.value = "0.05";
+    form.power.value = "500";
     // Initialize last edited fields with voltage and current
     lastEditedFields = ['voltage', 'current'];
     // Reset all units to base units
     voltageUnit = 'V';
-    currentUnit = 'A';
+    currentUnit = 'mA';
     resistanceUnit = 'Ω';
-    powerUnit = 'W';
+    powerUnit = 'mW';
 }
 
 if (window.attachEvent)
