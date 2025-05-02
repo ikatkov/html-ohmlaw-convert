@@ -1,7 +1,7 @@
 {
   "name": "Ohm's Law calculator",
   "short_name": "Ohm",
-  "start_url": "/html-ohmlaw-convert/dbconvert.html?version=1.0.0",
+  "start_url": "/html-ohmlaw-convert/dbconvert.html?version=1.0.1",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000"

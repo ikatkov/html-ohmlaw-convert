@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/ikatkov/html-ohmlaw-convert/compare/v1.0.0...v1.0.1) (2025-05-02)
+
+
+### Bug Fixes
+
+* added link rel="icon" ([0fc8cba](https://github.com/ikatkov/html-ohmlaw-convert/commit/0fc8cba34457a5743e1938fe8820492ed89ed42d))
+
 # 1.0.0 (2025-05-02)
 
 
