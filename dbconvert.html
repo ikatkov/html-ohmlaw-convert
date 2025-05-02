@@ -26,32 +26,32 @@
                                             <td>Voltage (V)</td>
                                             <td class="dbc-rightcell"><br></td>
                                             <td>
-                                                <input type="number" name="voltage" value="0" onchange="update_voltage(this.form)">
-                                                V
+                                                <input type="number" name="voltage" value="0" onchange="update_voltage(this.form)" tabindex="1">
+                                                <button type="button" class="unit-button" onclick="toggleVoltageUnit(this)" tabindex="5">V</button>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Current (I)</td>
                                             <td class="dbc-rightcell"><br></td>
                                             <td>
-                                                <input type="number" name="current" value="0" onchange="update_current(this.form)">
-                                                A
+                                                <input type="number" name="current" value="0" onchange="update_current(this.form)" tabindex="2">
+                                                <button type="button" class="unit-button" onclick="toggleCurrentUnit(this)" tabindex="6">A</button>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Resistance (R)</td>
                                             <td class="dbc-rightcell"><br></td>
                                             <td>
-                                                <input type="number" name="resistance" value="0" onchange="update_resistance(this.form)">
-                                                Ω
+                                                <input type="number" name="resistance" value="0" onchange="update_resistance(this.form)" tabindex="3">
+                                                <button type="button" class="unit-button" onclick="toggleResistanceUnit(this)" tabindex="7">Ω</button>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Power (P)</td>
                                             <td class="dbc-rightcell"><br></td>
                                             <td>
-                                                <input type="number" name="power" value="0" onchange="update_power(this.form)">
-                                                W
+                                                <input type="number" name="power" value="0" onchange="update_power(this.form)" tabindex="4">
+                                                <button type="button" class="unit-button" onclick="togglePowerUnit(this)" tabindex="8">W</button>
                                             </td>
                                         </tr>
                                     </tbody>
